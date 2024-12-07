@@ -98,9 +98,15 @@ section {
 }
 
 .todoApp li button {
+  text-decoration: none;
   padding: 5px 10px;
   font-size: 12px;
   cursor: pointer;
+}
+
+/* Ensure buttons are not affected by text decoration styles */
+button {
+  text-decoration: none;
 }
 
 /* FOOTER */

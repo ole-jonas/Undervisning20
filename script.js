@@ -14,6 +14,7 @@ addButton.addEventListener("click", function (){
 
     // Creates a new Element to the list with the content from input after button press.
     const todoItem = document.createElement("li");
+    const inputFieldValue = inputField.value
     todoItem.textContent = inputFieldValue;
     todoList.appendChild(todoItem);
 
