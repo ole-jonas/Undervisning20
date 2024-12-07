@@ -1,7 +1,9 @@
 /* GENERAL */
 body {
-  background-color: #dc7373;
+  background-color: #e3a740;
   color: #0d0d0d;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 /* HEADER */
@@ -9,18 +11,18 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
+  padding: 8px 15px;
 }
 
 .headerLogo {
-  background-color: aquamarine;
+  background-color: rgb(234, 241, 239);
   padding: 8px;
   border: 2px solid black;
   border-radius: 50%;
 }
 
 .navigationList {
-  background-color: aquamarine;
+  background-color:  rgb(234, 241, 239);
   display: flex;
   justify-content: end;
   gap: 15px;
@@ -29,28 +31,112 @@ header {
   padding: 0;
 }
 
+@media screen and (max-Width: 768px) {
+  .navigationList {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
 /* MAIN */
 section {
   height: 100vh;
 }
 
 .flexCenter {
-  background-color: aquamarine;
+  background-color:  rgb(234, 241, 239);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .todoApp {
-  background-color: bisque;
-  height: 500px;
-  width: 500px;
+  background-color: rgb(232, 208, 170);
   border: 1px solid black;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px; /* Max width */
+  box-sizing: border-box;
+  margin: 0 15px;
+}
+
+.todoApp label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.todoApp input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.todoApp button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.todoApp ul {
+   margin-top: 15px;
+   padding: 0;
+   list-style-type: none;
+}
+
+.todoApp li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background-color: rgb(220, 200,160);
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.todoApp li button {
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 /* FOOTER */
 footer {
   display: flex;
   justify-content: center;
+  padding: 10px;
+}
+
+footer h3 {
+  font-size: 14px;
+}
+/* Responsive styles */
+@media screen and (max-width: 480px) {
+  .headerLogo {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  .navigationList li {
+    font-size: 14px;
+  }
+
+  .todoApp {
+    padding: 10px;
+    width: 100%;
+    max-width: none;
+  } 
+
+  .todoApp button,
+  .todoApp input {
+    font-size: 14px;
+  }
+
+  footer h3 {
+    font-size: 12px;
+  }
+  
 }
