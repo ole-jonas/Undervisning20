@@ -109,6 +109,10 @@ button {
   text-decoration: none;
 }
 
+.finished {
+  text-decoration: line-through;
+}
+
 /* FOOTER */
 footer {
   display: flex;

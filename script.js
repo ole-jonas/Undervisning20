@@ -14,7 +14,6 @@ addButton.addEventListener("click", function (){
 
     // Creates a new Element to the list with the content from input after button press.
     const todoItem = document.createElement("li");
-    const inputFieldValue = inputField.value
     todoItem.textContent = inputFieldValue;
     todoList.appendChild(todoItem);
 
@@ -26,11 +25,13 @@ addButton.addEventListener("click", function (){
     // Adding event listener for the "Finished" button
     finishedButton.addEventListener("click", function () {
         console.log("Ferdig knappen er trykket!");
+
+        todoItem.classList.toggle("finished");
         // Toggles the strikethrough effect on the todo item
-        if (todoItem.style.textDecoration === "line-through") {
-            todoItem.style.textDecoration = "none"; // Remove striketrough
-        } else {
-            todoItem.style.textDecoration = "line-through"; // Add strikethrough
+       // if (todoItem.style.textDecoration === "line-through") {
+        //    todoItem.style.textDecoration = "none"; // Remove striketrough
+       // } else {
+       //     todoItem.style.textDecoration = "line-through"; // Add strikethrough
         }
     });
 
@@ -44,7 +45,8 @@ addButton.addEventListener("click", function (){
         console.log("Slett knappen er trykket!");
 
         // Only remove the item if it has a strikethrough (i.e., its finished)
-        if (todoItem.style.textDecoration === "line-through") {
+        if (todoItem.classList.contains("finished")){
+        //(todoItem.style.textDecoration === "line-through") {
             todoItem.remove(); // Remove the todo item from the list
 }  else {
     console.log("The item is not finished yet and cannot be deleted.");
