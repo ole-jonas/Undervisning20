@@ -27,12 +27,7 @@ addButton.addEventListener("click", function (){
         console.log("Ferdig knappen er trykket!");
 
         todoItem.classList.toggle("finished");
-        // Toggles the strikethrough effect on the todo item
-       // if (todoItem.style.textDecoration === "line-through") {
-        //    todoItem.style.textDecoration = "none"; // Remove striketrough
-       // } else {
-       //     todoItem.style.textDecoration = "line-through"; // Add strikethrough
-        }
+    
     });
 
     // Creating the "Delete" button
