@@ -3,19 +3,44 @@ const inputField = document.querySelector("#inputField");
 const addButton = document.querySelector("#addButton");
 const todoList = document.querySelector("#todoList");
 
+// Load the to-do list from LocalStorage when the page loads
+document.addEventListener("DOMContentLoaded", loadTodos);
+
+function loadTodos() {
+    const storedTodos = JSON.parse(localStorage.getItem("todos"));
+    
+    if (storedTodos) {
+        storedTodos.forEach(todo => {
+            createTodoItem(todo.text, todo.finished);
+        });
+    }
+}
+
 // Registers when button is clicked and activates a function.
-addButton.addEventListener("click", function (){
+addButton.addEventListener("click", function () {
     console.log("Legg til knappen er trykket!");
 
-    // Creating a variable storing the value of another variable
-    // Taking the global variable inputField and using the method .value to fetch a value stored in a new variable.
+    // Get the value from the input field
     const inputFieldValue = inputField.value;
     console.log(inputFieldValue);
 
-    // Creates a new Element to the list with the content from input after button press.
+    // If the input is empty, do nothing
+    if (!inputFieldValue.trim()) return;
+
+    // Create the todo item and add it to the list
+    createTodoItem(inputFieldValue, false);
+
+    // Save the updated todo list to localStorage
+    saveTodos();
+});
+
+function createTodoItem(text, isFinished) {
     const todoItem = document.createElement("li");
-    todoItem.textContent = inputFieldValue;
-    todoList.appendChild(todoItem);
+    todoItem.textContent = text;
+
+    if (isFinished) {
+        todoItem.classList.add("finished");
+    }
 
     // Creating the "Finished" button
     const finishedButton = document.createElement("button");
@@ -27,7 +52,9 @@ addButton.addEventListener("click", function (){
         console.log("Ferdig knappen er trykket!");
 
         todoItem.classList.toggle("finished");
-    
+
+        // Save the updated todo list to localStorage
+        saveTodos();
     });
 
     // Creating the "Delete" button
@@ -39,13 +66,29 @@ addButton.addEventListener("click", function (){
     deleteButton.addEventListener("click", function () {
         console.log("Slett knappen er trykket!");
 
-        // Only remove the item if it has a strikethrough (i.e., its finished)
-        if (todoItem.classList.contains("finished")){
-        //(todoItem.style.textDecoration === "line-through") {
+        // Only remove the item if it is finished
+        if (todoItem.classList.contains("finished")) {
             todoItem.remove(); // Remove the todo item from the list
-}  else {
-    console.log("The item is not finished yet and cannot be deleted.");
-}  
+            saveTodos();
+        } else {
+            console.log("The item is not finished yet and cannot be deleted.");
+        }
     });
-});
-  
+
+    todoList.appendChild(todoItem);
+}
+
+function saveTodos() {
+    const todos = [];
+    const todoItems = todoList.querySelectorAll("li");
+
+    todoItems.forEach(todoItem => {
+        todos.push({
+            text: todoItem.firstChild.textContent.trim(), // Only the text part of the li
+            finished: todoItem.classList.contains("finished")
+        });
+    });
+
+    // Save the todos array to localStorage
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
