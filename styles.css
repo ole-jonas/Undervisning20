@@ -76,23 +76,22 @@ section {
 }
 
 .todoApp button {
-  width: 100%;
-  padding: 10px;
+  width: auto; /* Optional: Adjust if you don't want buttons to take full width */
+  padding: 6px 12px; /* Reduce padding to make the button smaller */
+  font-size: 14px; /*sss Reduce font size to make text smaller */
   margin-top: 10px;
-  font-size: 16px;
-  border: none; /* Remove border to make shadow more visible */
-  background-color: #f0f0f0; /* Add a light background color */
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2); /* Horizontal, vertocal, blur radius, color */
-  transition: all 0.3s ease; /* Smooth transition for shadow */
+  border: none;
+  background-color: #f0f0f0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .todoApp button:hover {
-  background-color: #d48f0f;  /* Change background color on hover */
-  color: white;  /* Change text color */
-  border: 1px solid #8b5e00;  /* Add border on hover */
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+  background-color: #d48f0f;
+  color: white;
+  border: 1px solid #8b5e00;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
 }
-
 .todoApp ul {
    margin-top: 15px;
    padding: 0;
